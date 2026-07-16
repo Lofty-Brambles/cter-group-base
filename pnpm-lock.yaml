@@ -17,6 +17,9 @@ importers:
       astro:
         specifier: ^7.0.9
         version: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(jiti@2.7.0)
+      astro-lqip:
+        specifier: ^1.8.4
+        version: 1.8.4(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(jiti@2.7.0))(sharp@0.35.3)
       preact:
         specifier: ^10.29.7
         version: 10.29.7(preact-render-to-string@6.7.0)
@@ -908,6 +911,12 @@ packages:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
     engines: {node: '>= 0.4'}
 
+  astro-lqip@1.8.4:
+    resolution: {integrity: sha512-avJxwAQ+LXBRDDKN6+FTxiZ0lhFT28bNhtMdesItIFk8aiwv1WMEeEzwYKeLqO+eHFxXKYt4V0LFUZt8UbMFeQ==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      astro: '>=3.3.0'
+
   astro@7.0.9:
     resolution: {integrity: sha512-WB5pA4LLQnmqjBh6EIu0z8aUV4q2/AoThgSZq57Rsp+oqqvPu7OwZ5eF+W4ku20TUTxIhiJW8dccuGvJPiW2UA==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
@@ -1410,6 +1419,11 @@ packages:
   picomatch@4.0.5:
     resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
     engines: {node: '>=12'}
+
+  plaiceholder@3.0.0:
+    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
+    peerDependencies:
+      sharp: '>= 0.30.6'
 
   postcss@8.5.19:
     resolution: {integrity: sha512-Mz8SaolMd8nB+G13WkORcxQKHZ/NE4xXevtkJHVuG+guo9/wYKlIMTKAqGdEmYOXR2ijPjTYNHssizdaVSUNdQ==}
@@ -2210,8 +2224,7 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@img/colour@1.1.0':
-    optional: true
+  '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.35.3':
     optionalDependencies:
@@ -2609,6 +2622,13 @@ snapshots:
   argparse@2.0.1: {}
 
   aria-query@5.3.2: {}
+
+  astro-lqip@1.8.4(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(jiti@2.7.0))(sharp@0.35.3):
+    dependencies:
+      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(jiti@2.7.0)
+      plaiceholder: 3.0.0(sharp@0.35.3)
+    transitivePeerDependencies:
+      - sharp
 
   astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(jiti@2.7.0):
     dependencies:
@@ -3167,6 +3187,10 @@ snapshots:
 
   picomatch@4.0.5: {}
 
+  plaiceholder@3.0.0(sharp@0.35.3):
+    dependencies:
+      sharp: 0.35.3
+
   postcss@8.5.19:
     dependencies:
       nanoid: 3.3.16
@@ -3304,7 +3328,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.3
       '@img/sharp-win32-ia32': 0.35.3
       '@img/sharp-win32-x64': 0.35.3
-    optional: true
 
   shiki@4.3.1:
     dependencies:

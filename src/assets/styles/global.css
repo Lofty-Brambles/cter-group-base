@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme inline {
+	--font-hanken-grotesk: var(--font-hanken-grotesk);
+	--font-atkinson-hyperlegible: var(--font-atkinson-hyperlegible);
+}

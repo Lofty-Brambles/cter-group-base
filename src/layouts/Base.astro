@@ -1,0 +1,52 @@
+---
+import { Font } from "astro:assets";
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const props = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="en">
+	<head>
+		<!-- @TODO: Use capo -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{props.title}</title>
+
+		<Font cssVariable="--font-hanken-grotesk" preload />
+		<Font cssVariable="--font-atkinson-hyperlegible" />
+
+		<link rel="icon" type="image/png" href={`/favicon.png`} />
+		<meta name="description" content={props.description} />
+
+		<meta property="og:title" content={props.title} />
+		<meta property="og:description" content={props.description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={import.meta.env.PUBLIC_SITE_URL} />
+		<!-- @TODO: add og-image -->
+		<meta property="og:image" content={``} />
+
+		<link rel="canonical" href={canonicalURL} />
+	</head>
+	<body>
+		<script is:inline>
+			const theme = localStorage.getItem("theme"),
+				isSystemDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+			theme === "dark" || (!theme && isSystemDark)
+				? document.documentElement.classList.add("dark")
+				: theme === "light"
+					? document.documentElement.classList.remove("dark")
+					: theme === "system" &&
+						isSystemDark &&
+						document.documentElement.classList.add("dark");
+		</script>
+		<slot />
+	</body>
+</html>
